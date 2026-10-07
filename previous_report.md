@@ -1,0 +1,17 @@
+Final Workflow and Implementation Plan
+Final Workflow
+The tracking system runs as two loops at different speeds inside one program, a coarse loop and a fine loop.
+Coarse loop, roughly once per second: stellarium_client.py queries Stellarium's RemoteControl API for the target object's current RA/Dec. coords.py converts that RA/Dec into Alt/Az for our exact location, using Skyfield's apparent-position pipeline, which accounts for light travel time, aberration, and Earth's real orientation so the coordinates reflect where the object will actually appear right now, not an idealized catalog position. This produces a predicted pointing direction, independent of the camera.
+Fine loop, every camera frame: detector.py captures a frame, converts it to grayscale, thresholds it to isolate bright pixels, finds the resulting blob, and calculates its centroid using image moments (Cx = M10/M00, Cy = M01/M00). The pixel offset between that centroid and the frame center is converted into an angular correction using a calibrated field-of-view constant.
+Both corrections, coarse and fine, are currently printed rather than sent to hardware. main_loop.py runs both loops together and is the point where they will later connect to real motor control.
+tel.py is the reserved module for that motor control layer. It will replace the current print statements with serial commands to the ESP32 or Arduino once the mechanical side of the telescope is ready to receive them.
+Implementation Plan
+Step 0, Environment setup: install dependencies from requirements.txt. Confirm Stellarium is running with the RemoteControl plugin's server enabled.
+Step 1, Validate stellarium_client.py in isolation: confirm get_status() connects successfully. Call get_object_info() for the target object and print the full raw JSON response, to see the actual keys Stellarium returns rather than assuming a fixed schema.
+Step 2, Validate coords.py in isolation: run the file's built-in Vega test. Cross-check the printed Alt/Az against Stellarium's own displayed values for Vega at the same moment, confirming the Skyfield calculation independently of the API.
+Step 3, Validate detector.py in isolation: run the file's built-in webcam test with a lamp in a dim room. Confirm the centroid marker follows the lamp reliably, tuning brightness_threshold and min_area as needed.
+Step 4, Integrate with main_loop.py: only after Steps 1 through 3 pass individually. Confirm both loops print sensible, stable numbers before moving further, since integration issues are far easier to isolate once each piece is already trusted on its own.
+Step 5, Calibrate FOV_DEGREES: currently a placeholder value in main_loop.py. Measure the camera's actual field of view, for example using the pixel distance between two known stars a known angular distance apart, and replace the placeholder with the measured value.
+Step 6, Build tel.py: only after main_loop.py is reliably producing correct corrections, and only once the mechanical restoration side of the telescope has an interface ready to receive motor commands. This replaces the placeholder print_motor_command() function with real serial communication.
+Open design decision to resolve before Step 6
+detector.py currently selects the largest detected blob in frame as the target, rather than the blob closest to the position predicted by the coarse loop. This choice should be revisited once more than one bright object is likely to appear in the camera's field of view.
