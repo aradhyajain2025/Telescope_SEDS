@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+simulation/output/
+astap_layer/test_images/
+*.ini
+*.log
+*.wcs

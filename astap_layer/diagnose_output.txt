@@ -1,0 +1,64 @@
+Aldebaran_fov0.7       Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Aldebaran_fov1.0       Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Aldebaran_fov2.0       Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Aldebaran_fov4.0       Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Altair_fov0.7          Y Y w w w w -> baseline  -t .02 -r 8
+Altair_fov1.0          Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Altair_fov2.0          Y Y . . w . -> baseline  -t .02 -r 8
+Altair_fov4.0          Y . . . . . -> baseline  -t .02 -r 8
+Antares_fov0.7         Y Y w w w w -> baseline  -t .02 -r 8
+Antares_fov1.0         Y Y . w w w -> baseline  -t .02 -r 8
+Antares_fov2.0         Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Antares_fov4.0         Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Arcturus_fov0.7        Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Arcturus_fov1.0        Y Y w w w w -> baseline  -t .02 -r 8
+Arcturus_fov2.0        Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Arcturus_fov4.0        Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Betelgeuse_fov0.7      . . . w w w -> NEVER SOLVED
+Betelgeuse_fov1.0      Y Y . w w w -> baseline  -t .02 -r 8
+Betelgeuse_fov2.0      . . . . . . -> NEVER SOLVED
+Betelgeuse_fov4.0      Y Y w w w w -> baseline  -t .02 -r 8
+Capella_fov0.7         Y Y w w w w -> baseline  -t .02 -r 8
+Capella_fov1.0         Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Capella_fov2.0         Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Capella_fov4.0         Y w Y Y w Y -> baseline  -t .02 -r 8
+Deneb_fov0.7           Y Y w w w w -> baseline  -t .02 -r 8
+Deneb_fov1.0           Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Deneb_fov2.0           . Y Y Y w Y -> more stars -s 300
+Deneb_fov4.0           Y . . w . w -> baseline  -t .02 -r 8
+M13_fov0.7             . . w w w w -> NEVER SOLVED
+M13_fov1.0             w . w w w w -> NEVER SOLVED
+M13_fov2.0             . . w w w w -> NEVER SOLVED
+M13_fov4.0             Y Y . . . . -> baseline  -t .02 -r 8
+M31_fov0.7             Y Y w w w w -> baseline  -t .02 -r 8
+M31_fov1.0             . . w w w w -> NEVER SOLVED
+M31_fov2.0             . . . w . w -> NEVER SOLVED
+M31_fov4.0             Y Y . . . . -> baseline  -t .02 -r 8
+M42_fov0.7             Y Y w w w w -> baseline  -t .02 -r 8
+M42_fov1.0             Y Y Y Y Y Y -> baseline  -t .02 -r 8
+M42_fov2.0             Y Y Y Y Y Y -> baseline  -t .02 -r 8
+M42_fov4.0             Y Y Y Y Y Y -> baseline  -t .02 -r 8
+M45_fov0.7             w w w w w w -> NEVER SOLVED
+M45_fov1.0             . . . . w . -> NEVER SOLVED
+M45_fov2.0             . . . . w . -> NEVER SOLVED
+M45_fov4.0             Y Y Y Y w Y -> baseline  -t .02 -r 8
+Polaris_fov0.7         Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Polaris_fov1.0         Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Polaris_fov2.0         Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Polaris_fov4.0         Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Spica_fov0.7           . . . . . . -> NEVER SOLVED
+Spica_fov1.0           . . . . . . -> NEVER SOLVED
+Spica_fov2.0           Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Spica_fov4.0           Y Y . w w w -> baseline  -t .02 -r 8
+Vega_fov0.7            Y Y w w w w -> baseline  -t .02 -r 8
+Vega_fov1.0            Y Y Y Y Y Y -> baseline  -t .02 -r 8
+Vega_fov2.0            Y Y w w Y w -> baseline  -t .02 -r 8
+Vega_fov4.0            Y w . . w . -> baseline  -t .02 -r 8
+
+solved correctly (Y), wrong/false solution (w), no solution (.)
+  baseline  -t .02 -r 8: 43/56
+  more stars -s 300: 40/56
+  looser    -t .03 -s 300: 25/56
+  wider     -r 15 -t .03 -s 300: 25/56
+  slow      -r 15 -t .03 -s 300: 23/56
+  min star  -m 5 -t .03 -s 300: 25/56
